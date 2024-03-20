@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+:root {
+    --background: rgb(24, 24, 25);
+    --font-color: rgb(255, 255, 255);
+    --input-height: 45px;
+    --border-radius: 45px;
+    --main-color: rgb(57, 149, 84);
+}
+
+.container {
+    width: min(100% - 60px, 1080px);
+    margin-inline: auto;
+}
+
+.center {
+    display: grid;
+    place-items: center ;
+}
+
+body {
+    background-color: var(--background);
+    font-family: "Inter", Arial, sans-serif;
+    color: var(--font-color);
+}
+
+.flex {
+    display: flex;
+}
+
+/*Main*/
+section {
+    height: 100dvh;
+}
+
+.content {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+h1 {
+    font-size: 60px;
+    padding-bottom: 20px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+input[type=text] {
+    width: 460px;
+    height: 60px;
+    padding: 0 20px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border: 1px solid rgba(163, 163, 163, 0.175);
+    transition-duration: 0.2s;
+    background-color: #ffffff1e;
+    
+}
+
+input[type=text]:focus {
+    border-color: #006eff6f;
+}
+
+input[type=button] {
+    width: 140px;
+    background-color: #0070ff;
+    height: 60px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    color: #fff;
+    transition-duration: 0.2s;
+}
+
+input[type=button]:hover {
+    background-color: #2382ff;
+}
+
+input[type=button]:active {
+    background-color: #0060dd;
+}
+
+.results {
+    position: absolute;
+    width: 460px;
+    margin-top: 70px;
+    background-color: red;
+}
+
+.movie-list {
+    position: relative;
+    top: 5px;
+    left: -70px;
+    border-radius: 6px;
+    background-color: rgb(244, 244, 244);
+    overflow: hidden;
+}
+
+ul li {
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    color: #000;
+    transition-duration: 0.2s;
+}
+
+ul li:hover {
+    background-color: #0070ff;
+    color: #fff;
+}
+
+.movie-box {
+    background-color: grey;
+    margin-top: 15px;
+    height: 340px;
+    width: 860px;
+    visibility: hidden;
+}
