@@ -87,7 +87,6 @@ input[type=button]:active {
     position: absolute;
     width: 460px;
     margin-top: 70px;
-    background-color: red;
 }
 
 .movie-list {
