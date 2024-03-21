@@ -58,7 +58,7 @@ input[type=text] {
     border: 1px solid rgba(163, 163, 163, 0.175);
     transition-duration: 0.2s;
     background-color: #ffffff1e;
-    
+    color: white;
 }
 
 input[type=text]:focus {
@@ -89,12 +89,14 @@ input[type=button]:active {
     margin-top: 70px;
 }
 
+ul {
+    height: 250px;
+}
+
 .movie-list {
     position: relative;
     top: 5px;
     left: -70px;
-    border-radius: 6px;
-    background-color: rgb(244, 244, 244);
     overflow: hidden;
 }
 
@@ -104,6 +106,7 @@ ul li {
     padding-left: 20px;
     color: #000;
     transition-duration: 0.2s;
+    background-color: rgb(244, 244, 244);
 }
 
 ul li:hover {
