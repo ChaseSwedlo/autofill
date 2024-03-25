@@ -107,6 +107,7 @@ ul li {
     color: #000;
     transition-duration: 0.2s;
     background-color: rgb(244, 244, 244);
+    cursor: pointer;
 }
 
 ul li:hover {
@@ -114,10 +115,42 @@ ul li:hover {
     color: #fff;
 }
 
+ul li:active {
+    background-color: #005dd7;
+    color: #fff;
+}
+
 .movie-box {
-    background-color: grey;
-    margin-top: 15px;
+    margin-top: 25px;
     height: 340px;
     width: 860px;
-    visibility: hidden;
+}
+
+.poster {
+    background-color: rgba(255, 0, 0, 0);
+    width: 26%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.text {
+    padding: 60px 0 60px 20px; 
+    width: 74%;
+}
+
+.text h2 {
+    font-size: 32px;
+}
+
+.time {
+    color: rgba(255, 255, 255, 0.619);
+    font-size: 14px;
+    padding-left: 5px;
+    margin-top: -10px;
+}
+
+
+.description {
+    font-size: 16px;
 }
