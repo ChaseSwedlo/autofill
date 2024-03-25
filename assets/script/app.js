@@ -3,7 +3,7 @@ import movies from '../data/movies.js';
 
 const userInput = document.querySelector('.user-input');
 const movieList = document.querySelector('.movie-lis');
-const lis = document.querySelectorAll('li');
+const button = document.querySelector('.search');
 
 function searchMovies(val) {
     let inputVal = val;
@@ -19,22 +19,16 @@ function searchMovies(val) {
 function list(input) {
     const occurrences = searchMovies(input);
     let htmlList = '';
-    if(occurrences.length != 0) {
-        for(let i = 0; i < occurrences.length; i++) {
-            htmlList += `<li>${occurrences[i].title}</li>`;
-            console.log(occurrences[i].title);
-        }
+    if (occurrences.length !== 0) {
+        const htmlList = occurrences.map(movie => `<li>${movie.title}</li>`).join('');
         movieList.innerHTML = htmlList;
+    } else if (userInput.value.length >= 2) {
+        movieList.innerHTML = '<li class="no-hover">No movies found</li>';
+    } else {
+        movieList.innerHTML = '';
     }
-    else if(userInput.value.length >= 2) {
-        htmlList = '<li>No movies found</li>';
-        movieList.innerHTML = htmlList;
-    }
-    else {
-        htmlList = '';
-        movieList.innerHTML = htmlList;
-    }
-    if(userInput.value === '') {
+    
+    if (userInput.value === '') {
         movieList.innerHTML = '';
     }
 }
@@ -57,6 +51,7 @@ const movPoster = document.querySelector('.poster');
 const movTitle = document.querySelector('.title');
 const movDescription = document.querySelector('.description');
 const movTime = document.querySelector('.time');
+const movBox = document.querySelector('.movie-box');
 function buildMovieInfo(title) {
     let index = findIndex(title);
     console.log(index);
@@ -73,12 +68,30 @@ function clearInput() {
     movieList.innerHTML = '';
 }
 
+let selectedTitle = '';
 document.addEventListener("DOMContentLoaded", () => {
     movieList.addEventListener("click", (event) => {
       if (event.target.tagName === "LI") {
-        let selectedTitle = event.target.innerText;
-        buildMovieInfo(selectedTitle);
-        clearInput();
+        selectedTitle = event.target.innerText;
+        if(selectedTitle != 'No movies found') {
+            userInput.value = selectedTitle;
+            movieList.innerHTML = '';
+        }
       }
     });
-  });
+});
+
+button.addEventListener("click", () => {
+    if(userInput.value != '') {
+        if(userInput.value != movTitle.innerText) {
+            buildMovieInfo(selectedTitle);
+            clearInput();
+            movBox.classList.remove('hidden');
+            movBox.classList.add('shown');
+        }
+    }
+    else {
+        movBox.classList.remove('shown');
+        movBox.classList.add('hidden');
+    }
+});

@@ -120,10 +120,33 @@ ul li:active {
     color: #fff;
 }
 
+.no-hover:hover {
+    background-color: rgb(244, 244, 244);
+    cursor: default;
+    color: #000;
+}
+
 .movie-box {
     margin-top: 25px;
     height: 340px;
     width: 860px;
+    z-index: -1;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.shown {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.translateY {
+    transform: translateY(10px);
 }
 
 .poster {
