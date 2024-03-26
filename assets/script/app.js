@@ -51,13 +51,19 @@ const movTitle = document.querySelector('.title');
 const movDescription = document.querySelector('.description');
 const movTime = document.querySelector('.time');
 const movBox = document.querySelector('.movie-box');
+const genreP = document.querySelector('.genre');
 function buildMovieInfo(title) {
     let index = findIndex(title);
     let imgURL = movies[index].poster;
+    let genreList = '';
     movPoster.style.backgroundImage = `url(${imgURL})`;
     movTitle.innerText = movies[index].title;
     movDescription.innerText = movies[index].description;
-    movTime.innerText = movies[index].runningTime;
+    movTime.innerText = `${movies[index].year} | ${movies[index].runningTime}`;
+    for(let i = 0; i < movies[index].genre.length; i++) {
+        genreList += `<span>${movies[index].genre[i]}</span>`
+    }
+    genreP.innerHTML = genreList;
 }
 
 function clearInput() {

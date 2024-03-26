@@ -95,7 +95,7 @@ ul {
 
 .movie-list {
     position: relative;
-    top: 5px;
+    top: -2px;
     left: -70px;
     overflow: hidden;
 }
@@ -108,6 +108,16 @@ ul li {
     transition-duration: 0.2s;
     background-color: rgb(244, 244, 244);
     cursor: pointer;
+}
+
+ul li:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+ul li:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 ul li:hover {
@@ -170,10 +180,24 @@ ul li:active {
     color: rgba(255, 255, 255, 0.619);
     font-size: 14px;
     padding-left: 5px;
-    margin-top: -10px;
+    margin-top: -5px;
 }
 
 
 .description {
     font-size: 16px;
+}
+
+.genre {
+    margin-top: 7px;
+    font-size: 12px;
+}
+
+span {
+    background-color: rgba(58, 58, 59, 0.784);
+    color: rgba(255, 255, 255, 0.655);
+    padding: 3px 8px;
+    border-radius: 15px;
+    border: 1px solid rgba(165, 165, 165, 0.185);
+    margin-left: 5px;
 }
