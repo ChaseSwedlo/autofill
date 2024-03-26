@@ -34,7 +34,6 @@ function list(input) {
 }
 
 userInput.addEventListener('input', () => {
-    console.log(searchMovies(userInput.value));
     let userIn = userInput.value.toLowerCase();
     const arr = searchMovies(userIn);
     list(userIn);
@@ -54,9 +53,7 @@ const movTime = document.querySelector('.time');
 const movBox = document.querySelector('.movie-box');
 function buildMovieInfo(title) {
     let index = findIndex(title);
-    console.log(index);
     let imgURL = movies[index].poster;
-    console.log(imgURL);
     movPoster.style.backgroundImage = `url(${imgURL})`;
     movTitle.innerText = movies[index].title;
     movDescription.innerText = movies[index].description;
@@ -93,5 +90,12 @@ button.addEventListener("click", () => {
     else {
         movBox.classList.remove('shown');
         movBox.classList.add('hidden');
+    }
+});
+
+document.addEventListener('click', (event) => {
+    let target  = event.target;
+    if(target !== movieList && target !== userInput && target !== button) {
+        movieList.innerHTML = '';
     }
 });
