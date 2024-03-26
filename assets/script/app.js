@@ -4,6 +4,13 @@ import movies from '../data/movies.js';
 const userInput = document.querySelector('.user-input');
 const movieList = document.querySelector('.movie-lis');
 const button = document.querySelector('.search');
+const movPoster = document.querySelector('.poster');
+const movTitle = document.querySelector('.title');
+const movDescription = document.querySelector('.description');
+const movTime = document.querySelector('.time');
+const movBox = document.querySelector('.movie-box');
+const genreP = document.querySelector('.genre');
+let selectedTitle = '';
 
 function searchMovies(val) {
     let inputVal = val;
@@ -18,7 +25,6 @@ function searchMovies(val) {
 
 function list(input) {
     const occurrences = searchMovies(input);
-    let htmlList = '';
     if (occurrences.length !== 0) {
         const htmlList = occurrences.map(movie => `<li>${movie.title}</li>`).join('');
         movieList.innerHTML = htmlList;
@@ -35,7 +41,6 @@ function list(input) {
 
 userInput.addEventListener('input', () => {
     let userIn = userInput.value.toLowerCase();
-    const arr = searchMovies(userIn);
     list(userIn);
 });
 
@@ -46,12 +51,6 @@ function findIndex(title) {
     }
 }
 
-const movPoster = document.querySelector('.poster');
-const movTitle = document.querySelector('.title');
-const movDescription = document.querySelector('.description');
-const movTime = document.querySelector('.time');
-const movBox = document.querySelector('.movie-box');
-const genreP = document.querySelector('.genre');
 function buildMovieInfo(title) {
     let index = findIndex(title);
     let imgURL = movies[index].poster;
@@ -71,7 +70,6 @@ function clearInput() {
     movieList.innerHTML = '';
 }
 
-let selectedTitle = '';
 document.addEventListener("DOMContentLoaded", () => {
     movieList.addEventListener("click", (event) => {
       if (event.target.tagName === "LI") {
@@ -86,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 button.addEventListener("click", () => {
     if(userInput.value != '') {
-        if(userInput.value != movTitle.innerText) {
+        if(userInput.value != movTitle.innerText && movieList.innerHTML === '') {
             buildMovieInfo(selectedTitle);
             clearInput();
             movBox.classList.remove('hidden');
@@ -101,7 +99,7 @@ button.addEventListener("click", () => {
 
 document.addEventListener('click', (event) => {
     let target  = event.target;
-    if(target !== movieList && target !== userInput && target !== button) {
+    if (![movieList, userInput, button].includes(target) && selectedTitle !== 'No movies found') {
         movieList.innerHTML = '';
     }
 });
