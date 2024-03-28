@@ -41,7 +41,10 @@ function list(input) {
 
 userInput.addEventListener('input', () => {
     let userIn = userInput.value.toLowerCase();
-    list(userIn);
+    if(userIn.length > 2)
+        list(userIn);
+    else
+        movieList.innerHTML = '';
 });
 
 function findIndex(title) {
@@ -85,10 +88,16 @@ document.addEventListener("DOMContentLoaded", () => {
 button.addEventListener("click", () => {
     if(userInput.value != '') {
         if(userInput.value != movTitle.innerText && movieList.innerHTML === '') {
-            buildMovieInfo(selectedTitle);
+            console.log(movTitle.innerText);
             clearInput();
-            movBox.classList.remove('hidden');
-            movBox.classList.add('shown');
+            console.log('hello');
+            movBox.classList.add('hidden');
+            movBox.classList.remove('shown');
+            setTimeout(function() {
+                buildMovieInfo(selectedTitle);
+                movBox.classList.remove('hidden');
+                movBox.classList.add('shown');
+            }, 300); 
         }
     }
     else {
@@ -98,7 +107,7 @@ button.addEventListener("click", () => {
 });
 
 document.addEventListener('click', (event) => {
-    let target  = event.target;
+    let target = event.target;
     if (![movieList, userInput, button].includes(target) && selectedTitle !== 'No movies found') {
         movieList.innerHTML = '';
     }
