@@ -75,20 +75,19 @@ function clearInput() {
 
 document.addEventListener("DOMContentLoaded", () => {
     movieList.addEventListener("click", (event) => {
-      if (event.target.tagName === "LI") {
-        selectedTitle = event.target.innerText;
-        if(selectedTitle != 'No movies found') {
-            userInput.value = selectedTitle;
-            movieList.innerHTML = '';
+        if (event.target.tagName === "LI") {
+            selectedTitle = event.target.innerText;
+            if(selectedTitle != 'No movies found') {
+                userInput.value = selectedTitle;
+                movieList.innerHTML = '';
+            }
         }
-      }
     });
 });
 
 button.addEventListener("click", () => {
     if(userInput.value != '') {
         if(userInput.value != movTitle.innerText && movieList.innerHTML === '') {
-            console.log(movTitle.innerText);
             clearInput();
             console.log('hello');
             movBox.classList.add('hidden');
@@ -97,7 +96,7 @@ button.addEventListener("click", () => {
                 buildMovieInfo(selectedTitle);
                 movBox.classList.remove('hidden');
                 movBox.classList.add('shown');
-            }, 300); 
+            }, 400); 
         }
     }
     else {
